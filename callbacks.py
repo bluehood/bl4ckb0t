@@ -43,6 +43,11 @@ def talk(bot, update):
         bot.sendSticker(chat_id=chat_id, sticker=stickers[int(rand() < 0.5)])
 
 
+# print all message info to console
+def print_msg_info(bot, update):
+    print update.message
+
+
 # Error callbacks
 def error_callback(bot, update, error):
     try:
