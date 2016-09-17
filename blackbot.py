@@ -29,3 +29,7 @@ dp.add_handler(talk_handler)
 
 # start bot
 updater.start_polling()
+
+
+# run until the process receives SIGINT, SIGTERM or SIGABRT
+updater.idle()
