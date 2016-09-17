@@ -10,7 +10,6 @@ import callbacks as cb
 fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 logging.basicConfig(format=fmt, level=logging.INFO)
 
-
 # setup bot
 updater = Updater(token='inset token')
 dp = updater.dispatcher
@@ -26,10 +25,8 @@ dp.add_handler(gerry_handler)
 talk_handler = MessageHandler([Filters.text], cb.talk)
 dp.add_handler(talk_handler)
 
-
 # start bot
 updater.start_polling()
-
 
 # run until the process receives SIGINT, SIGTERM or SIGABRT
 updater.idle()

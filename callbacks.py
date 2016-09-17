@@ -32,9 +32,15 @@ def talk(bot, update):
     if msg:
         bot.sendMessage(chat_id=chat_id, text=msg)
 
-    if rand() < 1./200.:
+    if rand() < 1./50.:
         msg = 'oh raga ma la grigliata è confermata?'
         bot.sendMessage(chat_id=chat_id, text=msg)
+
+    if rand() < 1./50.:
+        vignati_hat = 'BQADBAADRAADnWzWBo9KlpThN0OQAg'
+        vignati_bw = 'BQADBAADcQADnWzWBjwXcOqPvseKAg'
+        stickers = [ vignati_hat, vignati_bw ]
+        bot.sendSticker(chat_id=chat_id, sticker=stickers[int(rand() < 0.5)])
 
 
 # Error callbacks
