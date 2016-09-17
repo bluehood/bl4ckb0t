@@ -35,7 +35,7 @@ def error_callback(bot, update, error):
         # remove update.message.chat_id from conversation list
         print "1", e
     except BadRequest as e:
-        # handle malformed requests - read more below!
+        # handle malformed requests
         print "2", e
     except TimedOut as e:
         # handle slow connection problems
