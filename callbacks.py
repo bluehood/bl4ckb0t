@@ -13,8 +13,8 @@ def start(bot, update):
 
 # /noDaiGeeeeeerry
 def no_dai_Geeeeerry(bot, update):
-    bot.send_audio(chat_id=update.message.chat_id,
-                   audio=open("no_dai_Geeeeerry.ogg"))
+    voice_file = 'AwADBAADCwADzPSlEYhD8dBXfH8LAg'
+    bot.send_voice(chat_id=update.message.chat_id, voice=voice_file)
 
 
 # replies to text messages
