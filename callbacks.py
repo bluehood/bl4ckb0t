@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from random import random as rand
 from telegram.error import (TelegramError, Unauthorized, BadRequest, 
                             TimedOut, NetworkError)
 
@@ -20,12 +21,19 @@ def no_dai_Geeeeerry(bot, update):
 def talk(bot, update):
     text = update.message.text
     chat_id = update.message.chat_id
+    msg = ''
+
     if 'ho sbagliato' in text or 'Ho sbagliato' in text \
-                              or 'ah no' in text  or 'Ah no' in text:
+            or 'ah no' in text  or 'Ah no' in text:
         msg = 'Sei un cogliooooone'
-        bot.sendMessage(chat_id=chat_id, text=msg)
     elif 'no dai' in text or 'No dai' in text:
         msg = 'no dai geeeerry'
+
+    if msg:
+        bot.sendMessage(chat_id=chat_id, text=msg)
+
+    if rand() < 1./200.:
+        msg = 'oh raga ma la grigliata è confermata?'
         bot.sendMessage(chat_id=chat_id, text=msg)
 
 
