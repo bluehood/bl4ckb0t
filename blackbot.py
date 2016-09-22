@@ -25,6 +25,11 @@ dp.add_handler(gerry_handler)
 talk_handler = MessageHandler([Filters.text], cb.talk)
 dp.add_handler(talk_handler)
 
+# uncomment to print info on all received messages
+# (useful to find out file_id for stickers, voice messages and whatnot)
+#printall_handler = MessageHandler([], cb.print_msg_info)
+#dp.add_handler(printall_handler)
+
 # start bot
 updater.start_polling()
 
