@@ -22,13 +22,13 @@ def talk(bot, update):
     text = update.message.text
     chat_id = update.message.chat_id
     msg = ''
+    print update.message.from_user
 
     if 'ho sbagliato' in text or 'Ho sbagliato' in text \
             or 'ah no' in text  or 'Ah no' in text:
         msg = 'Sei un cogliooooone'
     elif 'no dai' in text or 'No dai' in text:
         msg = 'no dai geeeerry'
-
     if msg:
         bot.sendMessage(chat_id=chat_id, text=msg)
 
