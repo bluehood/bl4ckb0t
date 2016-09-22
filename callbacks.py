@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from random import random as rand
+from time import sleep
 from telegram.error import (TelegramError, Unauthorized, BadRequest, 
                             TimedOut, NetworkError)
 
@@ -34,6 +35,8 @@ def talk(bot, update):
 
     # prob. of at least one of these sent every 10 messages received is 0.57
     if rand() < 2./60.:
+        secondsBeforeNagging = 15
+        sleep(secondsBeforeNagging)
         msg = 'oh raga ma la grigliata è confermata?'
         bot.sendMessage(chat_id=chat_id, text=msg)
     elif rand() < 1./60.:
