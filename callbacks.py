@@ -32,11 +32,15 @@ def talk(bot, update):
     if msg:
         bot.sendMessage(chat_id=chat_id, text=msg)
 
-    if rand() < 1./50.:
+    # prob. of at least one of these sent every 10 messages received is 0.57
+    if rand() < 2./60.:
         msg = 'oh raga ma la grigliata è confermata?'
         bot.sendMessage(chat_id=chat_id, text=msg)
+    elif rand() < 1./60.:
+        msg="Oh raga, l'altro giorno la vale mi fa \"oh raga\""
+        bot.sendMessage(chat_id=update.message.chat_id, text=msg)
 
-    if rand() < 1./50.:
+    if rand() < 2./60.:
         vignati_hat = 'BQADBAADRAADnWzWBo9KlpThN0OQAg'
         vignati_bw = 'BQADBAADcQADnWzWBjwXcOqPvseKAg'
         stickers = [ vignati_hat, vignati_bw ]
