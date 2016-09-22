@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import numpy as np
 from random import random as rand
 from time import sleep
 from telegram.error import (TelegramError, Unauthorized, BadRequest, 
@@ -22,26 +23,51 @@ def no_dai_Geeeeerry(bot, update):
 def talk(bot, update):
     text = update.message.text
     chat_id = update.message.chat_id
-    msg = ''
     print update.message.from_user
 
-    if 'ho sbagliato' in text or 'Ho sbagliato' in text \
-            or 'ah no' in text  or 'Ah no' in text:
-        msg = 'Sei un cogliooooone'
-    elif 'no dai' in text or 'No dai' in text:
-        msg = 'no dai geeeerry'
-    if msg:
-        bot.sendMessage(chat_id=chat_id, text=msg)
+    testicle_triggers = {
+        'msg' : [ 'ho sbagliato', 'Ho sbagliato', 'Ah no', 'ah no' ],
+        'reply_type' : 'text',
+        'reply': [ 'Sei un cogliooooone' ]
+    }
+    gerry_triggers = {
+        'msg' : [ 'no dai', 'No dai', 'dai no', 'Dai no' ],
+        'reply_type' : 'text',
+        'reply' : [ 'no dai geeeeerry' ]
+    }
+    stefy_triggers = {
+        'msg' : [ 'no beh', 'No beh', 'forte', 'Forte', 'stefano', 'Stefano',
+                  'stefy', 'Stefy', 'hamiltoniana', 'Hamiltoniana',
+                  'autovalori' ],
+        'reply_type' : 'sticker',
+        'reply' : [ 'BQADBAADhQADnWzWBjYVjZV8OT1cAg',
+                    'BQADBAADnwADnWzWBuBUlm_lDucyAg',
+                    'BQADBAADnQADnWzWBj6GAtyTZtebAg' ]
+    }
 
-    # prob. of at least one of these sent every 10 messages received is 0.57
+    # ad-hoc replies to interesting messages
+    for trigger in [ testicle_triggers, gerry_triggers, stefy_triggers ]:
+        for s in trigger['msg']:
+            if s in text:
+                reply = np.random.choice(trigger['reply'])
+                rep_type = trigger['reply_type']
+                if rep_type == 'text':
+                    bot.sendMessage(chat_id=chat_id, text=reply)
+                elif rep_type == 'sticker':
+                    bot.sendSticker(chat_id=chat_id, sticker=reply)
+
+    # random replies to uninteresting messages
+    # prob. that at least one of these is sent every 10 mess. received is 0.57
     if rand() < 2./60.:
+        # note: until we switch to async processing this is a time during which
+        # bl4ckst0ne is completely paralysed
         secondsBeforeNagging = 15
         sleep(secondsBeforeNagging)
-        msg = 'oh raga ma la grigliata è confermata?'
-        bot.sendMessage(chat_id=chat_id, text=msg)
+        bot.sendMessage(chat_id=chat_id,
+                        text='oh raga ma la grigliata è confermata?')
     elif rand() < 1./60.:
-        msg="Oh raga, l'altro giorno la vale mi fa \"oh raga\""
-        bot.sendMessage(chat_id=update.message.chat_id, text=msg)
+        bot.sendMessage(chat_id=update.message.chat_id,
+                        text='Oh raga, l\'altro giorno la vale mi fa "oh raga"')
 
     if rand() < 2./60.:
         vignati_hat = 'BQADBAADRAADnWzWBo9KlpThN0OQAg'
