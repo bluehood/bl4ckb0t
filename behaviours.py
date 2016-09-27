@@ -39,12 +39,36 @@ kids_and_apples = {
 bhv.append(kids_and_apples)
 
 my_opinion = {
-    'trigger' : ('alla fine', 'Alla fine', 'Secondo me', 'secondo me'),
+    'trigger' : ('alla fine', 'Alla fine', 'Secondo me', 'secondo me',),
     'reply_type' : 'text',
-    'reply' : ('Secondo me è una cazzata',)
+    'reply' : ('Secondo me è una cazzata', 'Aspeeeeeetta!? No è una cazzata',)
 
 }
 bhv.append(my_opinion)
+
+about_einstein = {
+    'trigger' : ('Einstein', 'einstein', 'Albert', 'albert', 'Tutto sommato', 'tutto sommato', '1921', '1974',),
+    'reply_type' : 'text',
+    'reply' : ('Tutto sommato Einstein era un coglione', 'Se posso fare un commento Einstein nel 1921 era già come Hawking dopo il 1974, conferenze, libri divulgativi, soldi droga e puttane',)
+
+}
+bhv.append(about_einstein)
+
+about_hawking = {
+    'trigger' : ('Hawking', 'hawking', 'Stephen', 'stephen', 'paraplegico', 'handicap',),
+    'reply_type' : 'text',
+    'reply' : ('Boh Hawking si sa che ormai è un coglione che dice cazzate', 'Hawking è un paraplegico di merda',)
+
+}
+bhv.append(about_hawking)
+
+grandma_love = {
+    'trigger' : ('Nonna', 'nonna', 'Conto', 'conto', 'calcolo', 'lo sa fare', 'difficile'),
+    'reply_type' : 'text',
+    'reply' : ('Dai raga questo conto lo sa fare anche mia nonna',)
+
+}
+bhv.append(grandma_love)
 
 
 behaviours = tuple(bhv)
