@@ -41,7 +41,7 @@ bhv.append(kids_and_apples)
 my_opinion = {
     'trigger' : ['alla fine', 'Alla fine', 'Secondo me', 'secondo me'],
     'reply_type' : 'text',
-    'reply' : ('Secondo me è una cazzata')
+    'reply' : ('Secondo me è una cazzata',)
 
 }
 bhv.append(my_opinion)
