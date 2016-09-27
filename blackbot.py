@@ -10,11 +10,11 @@ logging.basicConfig(format=fmt, level=logging.INFO)
 
 
 def main():
-    # create the EventHandler
+    # create bl4ckst0ne
     updater = Updater('insert token')
+    dp = updater.dispatcher
 
     # register handlers
-    dp = updater.dispatcher
     dp.add_handler(CommandHandler('start', hnd.start))
     dp.add_handler(CommandHandler('nodai', hnd.no_dai_Geeeeerry))
     dp.add_handler(MessageHandler([Filters.text], hnd.talk))
