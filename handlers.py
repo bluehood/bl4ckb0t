@@ -5,6 +5,7 @@ from time import sleep
 from telegram.error import (TelegramError, Unauthorized, BadRequest, 
                             TimedOut, NetworkError)
 from behaviours import behaviours
+from speak import produce_sentence
 
 
 def start(bot, update):
@@ -48,6 +49,11 @@ def talk(bot, update):
         vignati_bw = 'BQADBAADcQADnWzWBjwXcOqPvseKAg'
         stickers = [vignati_hat, vignati_bw]
         bot.sendSticker(chat_id=chat_id, sticker=np.random.choice(stickers))
+
+
+def speak(bot, update):
+    """ Say what's on your mind """
+    bot.sendMessage(chat_id=update.message.chat_id, text=produce_sentence())
 
 
 def print_msg_info(bot, update):
