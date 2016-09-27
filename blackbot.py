@@ -1,37 +1,32 @@
 # -*- coding: utf-8 -*-
-
-from telegram.ext import Updater
-from telegram.ext import CommandHandler
-from telegram.ext import MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import logging
-import callbacks as cb
+import handlers as hnd
 
-# setup logging
+
+# enable logging
 fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 logging.basicConfig(format=fmt, level=logging.INFO)
 
-# setup bot
-updater = Updater(token='inset token')
-dp = updater.dispatcher
 
-dp.add_error_handler(cb.error_callback)
+def main():
+    # create the EventHandler
+    updater = Updater('insert token')
 
-start_handler = CommandHandler('start', cb.start)
-dp.add_handler(start_handler)
+    # register handlers
+    dp = updater.dispatcher
+    dp.add_handler(CommandHandler('start', hnd.start))
+    dp.add_handler(CommandHandler('nodai', hnd.no_dai_Geeeeerry))
+    dp.add_handler(MessageHandler([Filters.text], hnd.talk))
+    dp.add_error_handler(hnd.print_error_info)
+    #dp.add_handler(MessageHandler([], hnd.print_msg_info))
 
-gerry_handler = CommandHandler('nodai', cb.no_dai_Geeeeerry)
-dp.add_handler(gerry_handler)
+    # start LCMbot
+    updater.start_polling()
 
-talk_handler = MessageHandler([Filters.text], cb.talk)
-dp.add_handler(talk_handler)
+    # run until the process receives SIGINT, SIGTERM or SIGABRT
+    updater.idle()
 
-# uncomment to print info on all received messages
-# (useful to find out file_id for stickers, voice messages and whatnot)
-#printall_handler = MessageHandler([], cb.print_msg_info)
-#dp.add_handler(printall_handler)
 
-# start bot
-updater.start_polling()
-
-# run until the process receives SIGINT, SIGTERM or SIGABRT
-updater.idle()
+if __name__ == '__main__':
+    main()
