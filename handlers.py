@@ -36,20 +36,18 @@ def talk(bot, update):
                     bot.sendSticker(chat_id=chat_id, sticker=reply)
 
     # random replies to uninteresting messages
-    # prob. that at least one of these is sent every 10 mess. received is 0.57
-    if rand() < 2./60.:
-        # note: until we switch to async processing this is a time during which
-        # bl4ckst0ne is completely paralysed
-        secondsBeforeNagging = 15
-        sleep(secondsBeforeNagging)
+    if rand() < 6.9/420.:
+        # N.B. until we switch to async processing,
+        # bl4ckst0ne is completely paralysed while asking for BBQ confirmation
+        seconds_before_nagging = 15
+        sleep(seconds_before_nagging)
         bot.sendMessage(chat_id=chat_id,
                         text='oh raga ma la grigliata è confermata?')
-
-    if rand() < 2./60.:
+    if rand() < 6.9/420.:
         vignati_hat = 'BQADBAADRAADnWzWBo9KlpThN0OQAg'
         vignati_bw = 'BQADBAADcQADnWzWBjwXcOqPvseKAg'
-        stickers = [ vignati_hat, vignati_bw ]
-        bot.sendSticker(chat_id=chat_id, sticker=stickers[int(rand() < 0.5)])
+        stickers = [vignati_hat, vignati_bw]
+        bot.sendSticker(chat_id=chat_id, sticker=np.random.choice(stickers))
 
 
 def print_msg_info(bot, update):
