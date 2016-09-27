@@ -7,7 +7,7 @@ bhv = []
 calling_out_testicles = {
     'trigger' : ('ho sbagliato', 'Ho sbagliato', 'Ah no', 'ah no'),
     'reply_type' : 'text',
-    'reply': ('Sei un cogliooooone')
+    'reply': ('Sei un cogliooooone',)
 }
 bhv.append(calling_out_testicles)
 
@@ -33,7 +33,7 @@ kids_and_apples = {
     'trigger' : ('oh raga', 'Oh raga'),
     'reply_type' : 'text',
     'reply' : ('oh vale passa il coltello', 'oh vale ce l\'hai una mela?',
-               'oh raga, l\'altro giorno la vale mi fa "oh raga"')
+               'oh raga, l\'altro giorno la vale mi fa "oh raga"',)
                         
 }
 bhv.append(kids_and_apples)
