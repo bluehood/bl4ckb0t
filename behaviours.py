@@ -51,9 +51,9 @@ about_einstein = {
                  'tutto sommato', '1921', '1974'),
     'reply_type' : 'text',
     'reply' : ('Tutto sommato Einstein era un coglione',
-               'Se posso fare un commento Einstein nel 1921 era già come ' +
-               'Hawking dopo il 1974, conferenze, libri divulgativi, soldi ' +
-               'droga e puttane')
+               'Se posso fare un commento Einstein nel 1921 era già come '
+               + 'Hawking dopo il 1974, conferenze, libri divulgativi, soldi '
+               + 'droga e puttane')
 
 }
 bhv.append(about_einstein)
@@ -63,8 +63,8 @@ about_hawking = {
                  'handicap'),
     'reply_type' : 'text',
     'reply' : ('Boh Hawking si sa che ormai è un coglione che dice cazzate',
-               'Beh cmq detto da uno che è riuscito a mettere incinta ' +
-               'qualcuna avendo a malapena il pisello, io mi fiderei')
+               'Beh cmq detto da uno che è riuscito a mettere incinta '
+               + 'qualcuna avendo a malapena il pisello, io mi fiderei')
 
 }
 bhv.append(about_hawking)
