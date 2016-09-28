@@ -34,3 +34,5 @@ def produce_sentence():
     return ' '.join(sentence) + '.'
 
 
+if __name__ == "__main__":
+    print produce_sentence()
