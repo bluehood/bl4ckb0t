@@ -1,43 +1,36 @@
 # -*- coding: utf-8 -*-
 import numpy as np
-from scipy.stats import rv_discrete
 
 
 def produce_sentence():
-    # load person's beginnigs, ends, and pairs of words
-    begs = np.loadtxt("words_db/beginnings", dtype=("S20, f8"))
-    ends = np.loadtxt("words_db/ends", usecols=(1,), dtype=str)
-    # we want an np.array of these for performance reasons, but this means
-    # we have to keep all data as strings
-    pairs = np.loadtxt("words_db/pairs", dtype=str)
+    # load beginnigs, ends, and pairs of words
+    begs = np.loadtxt('words_db/beginnings', dtype=[('w','S20'), ('p','f8')])
+    ends = np.loadtxt('words_db/ends', usecols=(0,), dtype=str)
+    pairs = np.loadtxt('words_db/pairs',
+                       dtype=[('w1', 'S20'), ('w2', 'S20'), ('p','f8')])
 
-    # choose a beginning
-    whichbeg = rv_discrete(values=(range(begs.size), [ v[1] for v in begs ]))
-    sentence = [ begs[whichbeg.rvs()][0], ]
-    word = sentence[-1]
+    # normalise probabilities
+    begs['p'] /= begs['p'].sum()
+
+    # choose a beginning and start sentence
+    word = np.random.choice(begs['w'], p=begs['p'])
+    sentence = [word]
 
     # create rest of the sentence
     # if sentence reaches 15 words length, just stop
-    while len(sentence) < 15:
-        # if we don't know how to go on from that word,
-        # it's a good point to stop
-        while not word in pairs[:,0]:
+    while len(sentence) < 15 or word not in ends:
+        while word not in pairs['w1']:
+            # cannot continue from here. let's start again
             sentence[-1] += '.'
-            word = begs[whichbeg.rvs()][0]
-            sentence += (word,)
+            word = np.random.choice(begs['w'], p=begs['p'])
+            sentence.append(word)
 
-        # wpairs only contains pairs starting with word
-        wpairs = pairs[pairs[:,0]==word]
-        # create random discrete variable with weights == wpairs[:,2]
-        values = (range(wpairs.shape[0]), [float(x) for x in wpairs[:,2]])
-        whichword = rv_discrete(values=values)
-        # choose word using random discrete variable
-        word = wpairs[whichword.rvs(), 1]
         # add word to sentence
-        sentence += (word,)
-        
-        # when sentence is more than 5 words long, stop at next end word
-        if len(sentence) > 5 and word in ends:
-            break
+        tmp_pairs = pairs[pairs['w1'] == word]
+        norm_probs = tmp_pairs['p'] / tmp_pairs['p'].sum()
+        word = np.random.choice(tmp_pairs['w2'], p=norm_probs)
+        sentence.append(word)
 
-    return ' '.join(sentence)+'.'
+    return ' '.join(sentence) + '.'
+
+
