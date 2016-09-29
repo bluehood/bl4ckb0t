@@ -51,9 +51,10 @@ def talk(bot, update):
         bot.sendSticker(chat_id=chat_id, sticker=np.random.choice(stickers))
 
 
-def speak(bot, update):
+def speak(bot, update, args):
     """ Say what's on your mind """
-    bot.sendMessage(chat_id=update.message.chat_id, text=produce_sentence())
+    word = args[0] if len(args) > 0 else None
+    bot.sendMessage(chat_id=update.message.chat_id, text=produce_sentence(word))
 
 
 def print_msg_info(bot, update):

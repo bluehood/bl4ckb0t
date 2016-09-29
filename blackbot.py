@@ -17,7 +17,7 @@ def main():
     # register handlers
     dp.add_handler(CommandHandler('start', hnd.start))
     dp.add_handler(CommandHandler('nodai', hnd.no_dai_Geeeeerry))
-    dp.add_handler(CommandHandler('speak', hnd.speak))
+    dp.add_handler(CommandHandler('speak', hnd.speak, pass_args=True))
     dp.add_handler(MessageHandler([Filters.text], hnd.talk))
     dp.add_error_handler(hnd.print_error_info)
     #dp.add_handler(MessageHandler([], hnd.print_msg_info))
