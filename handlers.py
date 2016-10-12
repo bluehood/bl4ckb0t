@@ -13,19 +13,19 @@ logging.basicConfig(format=fmt, level=logging.INFO)
 
 
 def start(bot, update):
-    """ Start off with an anectode """
+    """Start off with an anectode"""
     update.message.reply_text(text="Oh raga, l'altro giorno la vale mi fa "
                                    "'oh raga'")
 
 
 def no_dai_Geeeeerry(bot, update):
-    """ Rebut Gerry's argument vigorously """
+    """Rebut Gerry's argument vigorously"""
     voice_file_id = 'AwADBAADCwADzPSlEYhD8dBXfH8LAg'
     update.message.reply_voice(voice=voice_file_id)
 
 
 def talk(bot, update):
-    """ Engage in meaningful conversation """
+    """Engage in meaningful conversation"""
     text = update.message.text
     msg = update.message
 
@@ -55,18 +55,18 @@ def talk(bot, update):
 
 
 def speak(bot, update, args):
-    """ Say what's on your mind """
+    """Say what's on your mind"""
     word = args[0] if len(args) > 0 else None
     update.message.reply_text(text=produce_sentence(word))
 
 
 def print_msg_info(bot, update):
-    """ Take notes - print logs to console """
+    """Take notes - print logs to console"""
     print update.message
 
 
 def print_error_info(bot, update, error):
-    """ Take notes - print errors to console """
+    """Take notes - print errors to console"""
     # create a logger with function scope ("static object")
     error.logger = logging.getLogger(__name__)
     error.logger.warn('Update "%s" caused error "%s"' % (update, error))
