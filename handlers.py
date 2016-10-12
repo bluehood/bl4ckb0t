@@ -15,13 +15,14 @@ logging.basicConfig(format=fmt, level=logging.INFO)
 def start(bot, update):
     """Start off with an anectode"""
     update.message.reply_text(text="Oh raga, l'altro giorno la vale mi fa "
-                                   "'oh raga'")
+                                   "'oh raga'",
+                              quote=False)
 
 
 def no_dai_Geeeeerry(bot, update):
     """Rebut Gerry's argument vigorously"""
     voice_file_id = 'AwADBAADCwADzPSlEYhD8dBXfH8LAg'
-    update.message.reply_voice(voice=voice_file_id)
+    update.message.reply_voice(voice=voice_file_id, quote=False)
 
 
 def talk(bot, update):
@@ -46,18 +47,19 @@ def talk(bot, update):
         # bl4ckst0ne is completely paralysed while asking for BBQ confirmation
         seconds_before_nagging = 15
         sleep(seconds_before_nagging)
-        msg.reply_text(text='oh raga ma la grigliata è confermata?')
+        msg.reply_text(text='oh raga ma la grigliata è confermata?',
+                       quote=False)
     if rand() < 6.9/420.:
         vignati_hat = 'BQADBAADRAADnWzWBo9KlpThN0OQAg'
         vignati_bw = 'BQADBAADcQADnWzWBjwXcOqPvseKAg'
         stickers = [vignati_hat, vignati_bw]
-        msg.reply_sticker(sticker=np.random.choice(stickers))
+        msg.reply_sticker(sticker=np.random.choice(stickers), quote=False)
 
 
 def speak(bot, update, args):
     """Say what's on your mind"""
     word = args[0] if len(args) > 0 else None
-    update.message.reply_text(text=produce_sentence(word))
+    update.message.reply_text(text=produce_sentence(word), quote=False)
 
 
 def print_msg_info(bot, update):
