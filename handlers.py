@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
-import numpy as np
+import logging
 from random import random as rand
 from time import sleep
+import numpy as np
 from telegram.error import (TelegramError, Unauthorized, BadRequest, 
                             TimedOut, NetworkError)
 from behaviours import behaviours
 from speak import produce_sentence
+# enable logging
+fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+logging.basicConfig(format=fmt, level=logging.INFO)
 
 
 def start(bot, update):
@@ -64,4 +68,6 @@ def print_msg_info(bot, update):
 
 def print_error_info(bot, update, error):
     """ Take notes - print errors to console """
-    logger.warn('Update "%s" caused error "%s"' % (update, error))
+    # create a logger with function scope ("static object")
+    error.logger = logging.getLogger(__name__)
+    error.logger.warn('Update "%s" caused error "%s"' % (update, error))
